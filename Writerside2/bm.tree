@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="bm"
+                  name="Biblioteca Midossi" start-page="README.md">
+
+    <toc-element toc-title="Docs">
+        <toc-element toc-title="Backend">
+            <toc-element topic="DOCS-EN.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element toc-title="profile">
+        <toc-element topic="README.md"/>
+    </toc-element>
+</instance-profile>
