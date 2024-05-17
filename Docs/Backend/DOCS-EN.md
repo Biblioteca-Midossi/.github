@@ -3,11 +3,11 @@
 > [!NOTE]
 > For this guide, I'll assume your directories look like this:
 
-Backend/    /
-├─ Routes/  /
-│  ├─ __init__.py   /
-│  ├─ ExampleRouter.py /
-├─ App.py   /
+Backend <br/>
+├─ Routes <br/>
+│  ├─ __init__.py <br/>
+│  ├─ ExampleRouter.py <br/>
+├─ App.py <br/>
 
 <hr/>
 
@@ -62,7 +62,7 @@ async def root():
 > for when you need to "ping" your API. See how the argument of the decorator
 > is just `"/"`? That's where your route is located. In this case
 > `{host}:{port}/api/`.
-> 
+
 <hr/>
 
 ## Routes 🔁
@@ -94,6 +94,58 @@ Don't panic, I'll also show you how to create a router and add some routes!
 ### How to create new routes?
 - The simple way:
 ```Python
-biblioteca
+# App.py
+from fastapi import FastAPI
+biblioteca = FastAPI(root_path = '/api')
+
+@biblioteca.get("/")
+async def root():
+return {'message': 'Hello World'}
 ```
 
+- The best way:
+```Python
+# Routes/NewRoute.py
+from fastapi import APIRouter
+from fastapi.response import JSONResponse
+
+my_router = APIRouter(
+    responses = {
+        404: {
+            "description": "Not found"
+        }
+    }
+)
+
+@my_router('/test')
+async def test_route():
+    return JSONResponse({'message': ''})
+```
+
+```Python
+# Routes/__init__.py
+from fastapi import FastAPI
+from Routes import NewRoute
+
+async def register_routes(app: FastAPI):
+    app.include_router(Test.router)
+```
+
+```Python
+# App.py
+from context import asynccontextmanager
+from fastapi import FastAPI
+from Routes import register_router
+@asynccontextmanager
+  async def lifespan(app: FastAPI):
+  # Run at startup
+  await asyncio.create_task(register_routes(app))
+  yield
+
+
+biblioteca = FastAPI(lifespan = lifespan, root_path = '/api')
+```
+    
+> Although the latter takes more code, once you'll have many routers/routes everything will be more manageable, rather
+> than having all the routes in one file. /
+> You can still use the first one if you need a test route to start out, or for the root, like we do.
