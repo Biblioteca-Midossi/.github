@@ -4,8 +4,8 @@
 > [!NOTE]
 > At the time I'm writing this, both of the repos are private, so you will need an account registered to the 
 > organization in order to access them. \
-> These links lead to a branch of the repo, since we still haven't merged changes to the `main` branch \
-**[Backend/Alessandro](https://github.com/Biblioteca-Midossi/Backend/tree/Alessandro)** \
+> These links lead to a branch of the repo, since we still haven't merged changes to the `main` branch in some repos \
+**[Backend/main (already merged! Though there may be differences with the `prod` branch)](https://github.com/Biblioteca-Midossi/Backend)** \
 **[Frontend/Alessandro](https://github.com/Biblioteca-Midossi/Frontend/tree/Alessandro)**
 
 > [!IMPORTANT]
